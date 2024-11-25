@@ -1,30 +1,43 @@
 package com.microservices.demo.twitter.to.kafka.service;
 
-import com.microservices.demo.twitter.to.kafka.service.config.TwitterToKafkaServiceConfigData;
+import com.microservices.demo.config.TwitterToKafkaServiceConfigData;
+import com.microservices.demo.twitter.to.kafka.service.init.StreamInitializer;
+import com.microservices.demo.twitter.to.kafka.service.runner.StreamRunner;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
+@ComponentScan(basePackages = "com.microservices.demo")
 public class TwitterToKafkaServiceApplication implements CommandLineRunner {
 
-    private static final Logger LOG = LoggerFactory.getLogger(TwitterToKafkaServiceApplication.class);
-    private final TwitterToKafkaServiceConfigData twitterToKafkaServiceConfigData;
+	private static final Logger LOG = LoggerFactory.getLogger(TwitterToKafkaServiceApplication.class);
 
-    public TwitterToKafkaServiceApplication(TwitterToKafkaServiceConfigData configData) {
-        this.twitterToKafkaServiceConfigData = configData;
-    }
+	private final StreamRunner streamRunner;
 
-    public static void main(String[] args) {
+	private final StreamInitializer streamInitializer;
 
-        SpringApplication.run(TwitterToKafkaServiceApplication.class, args);
-    }
+	/*
+	 * Es mejor usar un constructor que @Autowired, no usa reflexion y es mas
+	 * eficiente
+	 */
+	public TwitterToKafkaServiceApplication(StreamRunner runner, StreamInitializer initializer) {
+		this.streamRunner = runner;
+		this.streamInitializer = initializer;
+	}
 
-    @Override
-    public void run(String... args) throws Exception {
-        LOG.info("App starts...");
-        LOG.info(twitterToKafkaServiceConfigData.getTwitterKeywords().toString());
-    }
+	public static void main(String[] args) {
+		SpringApplication.run(TwitterToKafkaServiceApplication.class, args);
+	}
+
+	@Override
+	public void run(String... args) throws Exception {
+		LOG.info("App starts...");
+		streamInitializer.init();
+		streamRunner.start();
+	}
 }
