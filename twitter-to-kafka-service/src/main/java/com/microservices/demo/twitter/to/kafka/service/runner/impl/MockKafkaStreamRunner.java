@@ -34,9 +34,17 @@ public class MockKafkaStreamRunner implements StreamRunner {
 	
 	private static final Random RANDOM = new Random();
 
-	private static final String[] WORDS = new String[] { "Lorem", "ipsum", "dolor", "sit", "amet", "consectetur",
-			"adipiscing", "elit", "Etiam", "eu", "mollis", "tortor", "eget", "molestie", "lectus", "Vestibulum", "et",
-			"libero", "ante", "Suspendisse", "placerat", "felis" };
+	private static final String[] WORDS = new String[] {
+			"Lorem", "ipsum",
+			"dolor", "sit",
+			"amet", "consectetur",
+			"adipiscing", "elit",
+			"Etiam", "eu", "mollis",
+			"tortor", "eget", "molestie",
+			"lectus", "Vestibulum", "et",
+			"libero", "ante", "Suspendisse",
+			"placerat", "felis"
+	};
 
 	private static final String tweetAsRawJson = "{" +
 			"\"created_at\":\"{0}\"," +
@@ -52,6 +60,7 @@ public class MockKafkaStreamRunner implements StreamRunner {
 		this.twitterKafkaStatusListener = statusListener;
 	}
 
+	@Override
 	public void start() throws TwitterException {
 		String[] keywords = twitterToKafkaServiceConfigData.getTwitterKeywords().toArray(new String[0]);
 		int minTweetLenght = twitterToKafkaServiceConfigData.getMockMinTweetLenght();
