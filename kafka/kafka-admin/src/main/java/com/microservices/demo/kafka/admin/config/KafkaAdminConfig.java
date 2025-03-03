@@ -14,16 +14,15 @@ import com.microservices.demo.config.KafkaConfigData;
 @Configuration
 public class KafkaAdminConfig {
 
-	private final KafkaConfigData kafkaConfigData;
+    private final KafkaConfigData kafkaConfigData;
 
-	public KafkaAdminConfig(KafkaConfigData configData) {
-		this.kafkaConfigData = configData;
-	}
+    public KafkaAdminConfig(KafkaConfigData configData) {
+        this.kafkaConfigData = configData;
+    }
 
-	@Bean
-	AdminClient adminClient() {
-		return AdminClient
-				.create(Map.of(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG, kafkaConfigData.getBootstrapServers()));
-	}
-
+    @Bean
+    public AdminClient adminClient() {
+        return AdminClient.create(Map.of(CommonClientConfigs.BOOTSTRAP_SERVERS_CONFIG,
+                kafkaConfigData.getBootstrapServers()));
+    }
 }
