@@ -59,6 +59,16 @@
 			<!-- LOCAL -->
 			<dependency>
 				<groupId>com.microservices.demo</groupId>
+				<artifactId>elastic-config</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.microservices.demo</groupId>
+				<artifactId>elastic-index-client</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>com.microservices.demo</groupId>
 				<artifactId>elastic-model</artifactId>
 				<version>${project.version}</version>
 			</dependency>
