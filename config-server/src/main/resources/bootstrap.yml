@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: configserver
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/Yesus98/spring-cloud-config-server-repository
+          default-label: main
+          username: Yesus98
+          password: '{cipher}f69db7e0a4ac5d7280f46223119919b18ed12594c0c35fef8ac19a49535ce2ff770daa518fa9c0b7994eafb6d1cf00b04f7933c60ceb9b2406b513196d973cf3920ed6cdfd53ab3b8753bec3070711ecc1867d4b0d3ecfff473ea6153f7642d316aad691100a303ff24d7db828e887c2'
+          clone-on-start: true
+    fail-fast: true
+  security:
+    user:
+      name: spring_cloud_user
+      password: '{cipher}6fac72c1965ff4f15351f9eee56a897a40f8e001e6b67db189504e1c6d9685364a837f7c73b48adaf68e3b7f42f86a22'
