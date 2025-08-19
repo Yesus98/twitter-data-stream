@@ -1,4 +1,3 @@
-version: '3.7'
 services:
   elastic-1:
     image: docker.elastic.co/elasticsearch/elasticsearch:${ELASTIC_VERSION:-latest}

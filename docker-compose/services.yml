@@ -1,4 +1,3 @@
-version: '3.7'
 services:
   twitter-to-kafka-service:
     image: ${GROUP_ID}/twitter.to.kafka.service:${SERVICE_VERSION:-latest}
