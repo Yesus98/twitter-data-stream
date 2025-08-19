@@ -64,6 +64,7 @@
 				<configuration>
 					<image>
 						<name>${project.groupId}/twitter.to.kafka.service:${project.version}</name>
+                        <builder>paketobuildpacks/builder:base</builder>
 					</image>
 				</configuration>
 				<executions>

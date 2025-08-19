@@ -78,6 +78,7 @@
                 <configuration>
 					<image>
 						<name>${project.groupId}/kafka.to.elastic.service:${project.version}</name>
+                        <builder>paketobuildpacks/builder:base</builder>
 					</image>
 				</configuration>
 				<executions>

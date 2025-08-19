@@ -69,6 +69,7 @@
                 <configuration>
                     <image>
                         <name>${project.groupId}/elastic.query.service:${project.version}</name>
+                        <builder>paketobuildpacks/builder:base</builder>
                     </image>
                 </configuration>
                 <executions>

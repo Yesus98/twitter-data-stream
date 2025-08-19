@@ -42,6 +42,7 @@
                 <configuration>
                     <image>
                         <name>${project.groupId}/config.server:${project.version}</name>
+                        <builder>paketobuildpacks/builder:base</builder>
                     </image>
                 </configuration>
                 <executions>
